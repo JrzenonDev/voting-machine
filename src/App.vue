@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <div class="urna">
-      <Tela />
+      <Tela
+        :tela ="tela"
+        :numeroVoto="numeroVoto"
+        :quantidadeNumeros="quantidadeNumeros"
+      />
       <Teclado />
     </div>
   </div>
@@ -18,6 +22,13 @@ export default {
   components: {
     Tela,
     Teclado
+  },
+  data() {
+    return {
+      tela: 'prefeito',
+      numeroVoto: '',
+      quantidadeNumeros: 2
+    }
   }
 }
 </script>
@@ -39,5 +50,6 @@ export default {
     padding: 30px;
     border-radius: 5px;
     display: flex;
+    justify-content: space-between;
   }
 </style>

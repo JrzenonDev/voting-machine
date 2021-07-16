@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <div class="urna">
+      <Tela />
       <Teclado />
     </div>
   </div>
 </template>
 
 <script>
+import Tela from '@/components/Tela.vue';
 import Teclado from '@/components/Teclado.vue';
 
 import '@/css/globals.css';
@@ -14,6 +16,7 @@ import '@/css/globals.css';
 export default {
   name: 'App',
   components: {
+    Tela,
     Teclado
   }
 }

@@ -6,7 +6,9 @@
         :numeroVoto="numeroVoto"
         :quantidadeNumeros="quantidadeNumeros"
       />
-      <Teclado />
+      <Teclado
+        :adicionarNumero="adicionarNumero"
+      />
     </div>
   </div>
 </template>
@@ -23,11 +25,48 @@ export default {
     Tela,
     Teclado
   },
+  methods: {
+    adicionarNumero(numero) {
+      // verify limit voted number
+      if (this.numeroVoto.length == this.quantidadeNumeros) {
+        return false;
+      }
+      // add selected number
+      this.numeroVoto += ''+numero;
+    }
+  },
   data() {
     return {
       tela: 'prefeito',
       numeroVoto: '',
-      quantidadeNumeros: 2
+      quantidadeNumeros: 2,
+      candidato: {},
+      candidatos: {
+        "prefeito":{
+          "01":{
+            "nome": "Ash",
+            "partido": "Pokemon",
+            "imagem": "/assets/images/ash.png"
+          },
+          "08":{
+            "nome": "Vegeta",
+            "partido": "Dragon Ball",
+            "imagem": "/assets/images/vegeta.png"
+          }
+        },
+        "vereador":{
+          "01234":{
+            "nome": "Pikachu",
+            "partido": "Pokemon",
+            "imagem": "/assets/images/pikachu.png"
+          },
+          "08001":{
+            "nome": "Goku",
+            "partido": "Dragon Ball",
+            "imagem": "/assets/images/goku.png"
+          }
+        }
+      }
     }
   }
 }

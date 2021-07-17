@@ -5,6 +5,7 @@
         :tela ="tela"
         :numeroVoto="numeroVoto"
         :quantidadeNumeros="quantidadeNumeros"
+        :candidato="candidato"
       />
       <Teclado
         :adicionarNumero="adicionarNumero"
@@ -33,6 +34,27 @@ export default {
       }
       // add selected number
       this.numeroVoto += ''+numero;
+
+      this.verificarCandidato();
+    },
+    verificarCandidato() {
+      // voted imcomplete
+      if (this.numeroVoto.length < this.quantidadeNumeros) {
+        return false;
+      }
+
+      // check if the candidate exists
+      if (this.candidatos[this.tela][this.numeroVoto]) {
+        this.candidato = this.candidatos[this.tela][this.numeroVoto];
+        return true;
+      }
+
+      // vote null
+      this.candidato = {
+       nome: 'Voto nulo',
+       partido: 'Voto nulo',
+       imagem: ''
+      }
     }
   },
   data() {

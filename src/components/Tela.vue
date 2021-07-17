@@ -17,6 +17,14 @@
 
       </div>
 
+      <div class="urna-tela-voto-descricao">
+        Nome: <strong>{{ candidato.nome ? candidato.nome : '-------------------' }}</strong>
+      </div>
+
+      <div class="urna-tela-voto-descricao">
+        Partido: <strong>{{ candidato.partido ? candidato.partido : '-------------------' }}</strong>
+      </div>
+
       <div class="urna-tela-voto-imagem">
 
       </div>
@@ -40,7 +48,8 @@
     props: {
       tela: String,
       numeroVoto: String,
-      quantidadeNumeros: Number
+      quantidadeNumeros: Number,
+      candidato: Object
     }
   }
 </script>

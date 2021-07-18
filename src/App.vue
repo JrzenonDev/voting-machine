@@ -11,6 +11,7 @@
         :adicionarNumero="adicionarNumero"
         :corrigir="corrigir"
         :confirmar="confirmar"
+        :votarEmBranco="votarEmBranco"
       />
     </div>
   </div>
@@ -81,6 +82,19 @@ export default {
       }
 
       this.tela = 'fim';
+
+      var instancia = this;
+      setTimeout(function() {
+        instancia.tela = 'prefeito';
+        instancia.quantidadeNumeros = 2;
+        return instancia.limpar();
+      }, 3000);
+    },
+    votarEmBranco() {
+      if(this.tela == 'fim') return false;
+
+      this.limpar();
+      this.avancarTela();
     }
   },
   data() {

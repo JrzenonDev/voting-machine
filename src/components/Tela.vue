@@ -40,7 +40,7 @@
     </div>
 
     <div v-if="tela == 'fim'" class="urna-tela-fim">
-      finalização
+      FIM
     </div>
 
   </div>
@@ -119,5 +119,14 @@
     border-top: 1px solid var(--dark-border-color);
     font-size: 13px;
     padding-top: 10px;
+  }
+
+  .urna-tela-fim {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 120px;
+    width: 100%;
+    height: 100%;
   }
 </style>

@@ -22,6 +22,9 @@ import Tela from '@/components/Tela.vue';
 import Teclado from '@/components/Teclado.vue';
 
 import '@/css/globals.css';
+import confirmaAudio from '@/assets/confirm.wav';
+import keyAudio from '@/assets/key.wav';
+
 
 export default {
   name: 'App',
@@ -31,6 +34,7 @@ export default {
   },
   methods: {
     adicionarNumero(numero) {
+      this.executarSom(keyAudio);
       // verify limit voted number
       if (this.numeroVoto.length == this.quantidadeNumeros) {
         return false;
@@ -67,6 +71,7 @@ export default {
       this.numeroVoto = '';
     },
     confirmar() {
+      this.executarSom(keyAudio);
       if (this.numeroVoto.length < this.quantidadeNumeros) {
         return false;
       }
@@ -74,6 +79,7 @@ export default {
       return this.avancarTela();
     },
     avancarTela() {
+      this.executarSom(confirmaAudio);
       if(this.tela == 'prefeito') {
         this.tela = 'vereador';
         this.quantidadeNumeros = 5;
@@ -95,6 +101,12 @@ export default {
 
       this.limpar();
       this.avancarTela();
+    },
+    executarSom(arquivoSom) {
+      if (arquivoSom) {
+        let audio = new Audio(arquivoSom);
+        audio.play();
+      }
     }
   },
   data() {

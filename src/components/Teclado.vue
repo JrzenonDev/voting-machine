@@ -30,8 +30,8 @@
 
     <div class="urna-teclado-acoes">
       <button class="btn-branco">BRANCO</button>
-      <button class="btn-corrige">CORRIGE</button>
-      <button class="btn-confirma">CONFIRMA</button>
+      <button class="btn-corrige" @click="corrigir()">CORRIGE</button>
+      <button class="btn-confirma" @click="confirmar">CONFIRMA</button>
     </div>
 
   </div>
@@ -42,7 +42,9 @@
 export default {
   name: 'Teclado',
   props: {
-    adicionarNumero: Function
+    adicionarNumero: Function,
+    corrigir: Function,
+    confirmar: Function
   }
 }
 </script>

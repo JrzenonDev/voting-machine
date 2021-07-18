@@ -6,31 +6,35 @@
       <div class="urna-tela-voto-textos">
         <div class="urna-tela-voto-titulo">Seu voto para:</div>
         <div class="urna-tela-voto-tipo">{{tela}}</div>
-      </div>
 
-      <div class="urna-tela-voto-numeros">
-        Números
+        <div class="urna-tela-voto-numeros">
+          Números
 
-        <div class="urna-tela-voto-numero" v-for="(value, key) in numeroVoto.padEnd(quantidadeNumeros, ' ')" :key="key">
-          {{ value }}
+          <div class="urna-tela-voto-numero" v-for="(value, key) in numeroVoto.padEnd(quantidadeNumeros, ' ')" :key="key">
+            {{ value }}
+          </div>
+
+        </div>
+
+        <div class="urna-tela-voto-descricao">
+          Nome: <strong>{{ candidato.nome ? candidato.nome : '-------------------' }}</strong>
+        </div>
+
+        <div class="urna-tela-voto-descricao">
+          Partido: <strong>{{ candidato.partido ? candidato.partido : '-------------------' }}</strong>
         </div>
 
       </div>
 
-      <div class="urna-tela-voto-descricao">
-        Nome: <strong>{{ candidato.nome ? candidato.nome : '-------------------' }}</strong>
-      </div>
-
-      <div class="urna-tela-voto-descricao">
-        Partido: <strong>{{ candidato.partido ? candidato.partido : '-------------------' }}</strong>
-      </div>
-
-      <div class="urna-tela-voto-imagem">
-
+      <div v-if="candidato.imagem" class="urna-tela-voto-imagem">
+        <img :src="candidato.imagem">
       </div>
 
       <div class="urna-tela-voto-instrucoes">
-
+        <p>Aperte a tecla:</p>
+        <p>BRANCO para VOTAR EM BRANCO</p>
+        <p>LARANJA para CORRIGIR</p>
+        <p>VERDE para CONFIRMAR</p>
       </div>
 
     </div>
@@ -55,6 +59,7 @@
 </script>
 
 <style scoped>
+
   .urna-tela {
     width: 55%;
     height: 100%;
@@ -63,6 +68,17 @@
     border: 2px solid var(--light-border-color);
     padding: 20px;
     color: var(--dark-color-dark);
+  }
+
+  .urna-tela-voto {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+  }
+
+  .urna-tela-voto-textos {
+    flex: 1;
   }
 
   .urna-tela-voto-titulo {
@@ -90,5 +106,18 @@
     justify-content: center;
     align-items: center;
     font-size: 30px;
+  }
+
+  .urna-tela-voto-imagem img {
+    width: 110px;
+    height: 150px;
+    border: 1px solid var(--dark-border-color);
+  }
+
+  .urna-tela-voto-instrucoes {
+    width: 100%;
+    border-top: 1px solid var(--dark-border-color);
+    font-size: 13px;
+    padding-top: 10px;
   }
 </style>

@@ -9,6 +9,8 @@
       />
       <Teclado
         :adicionarNumero="adicionarNumero"
+        :corrigir="corrigir"
+        :confirmar="confirmar"
       />
     </div>
   </div>
@@ -55,6 +57,30 @@ export default {
        partido: 'Voto nulo',
        imagem: ''
       }
+    },
+    corrigir() {
+      this.limpar();
+    },
+    limpar() {
+      this.candidato = {};
+      this.numeroVoto = '';
+    },
+    confirmar() {
+      if (this.numeroVoto.length < this.quantidadeNumeros) {
+        return false;
+      }
+
+      return this.avancarTela();
+    },
+    avancarTela() {
+      if(this.tela == 'prefeito') {
+        this.tela = 'vereador';
+        this.quantidadeNumeros = 5;
+        console.log('tela: ', this.tela);
+        return this.limpar();
+      }
+
+      this.tela = 'fim';
     }
   },
   data() {
@@ -68,24 +94,24 @@ export default {
           "01":{
             "nome": "Ash",
             "partido": "Pokemon",
-            "imagem": "/assets/images/ash.png"
+            "imagem": "https://raw.githubusercontent.com/william-costa/wdev-urna-eletronica-resources/master/images/ash.png"
           },
           "08":{
             "nome": "Vegeta",
             "partido": "Dragon Ball",
-            "imagem": "/assets/images/vegeta.png"
+            "imagem": "https://raw.githubusercontent.com/william-costa/wdev-urna-eletronica-resources/master/images/vegeta.png"
           }
         },
         "vereador":{
           "01234":{
             "nome": "Pikachu",
             "partido": "Pokemon",
-            "imagem": "/assets/images/pikachu.png"
+            "imagem": "https://raw.githubusercontent.com/william-costa/wdev-urna-eletronica-resources/master/images/pikachu.png"
           },
           "08001":{
             "nome": "Goku",
             "partido": "Dragon Ball",
-            "imagem": "/assets/images/goku.png"
+            "imagem": "https://raw.githubusercontent.com/william-costa/wdev-urna-eletronica-resources/master/images/goku.png"
           }
         }
       }

@@ -1,4 +1,4 @@
-# whatsapp
+# voting-machine
 
 ## Project setup
 ```
